@@ -26,6 +26,7 @@
   public function energy(){ return $this->energy;}
   public function mileage(){ return $this->mileage;}
   public function description(){ return $this->description;}
+  public function year_r(){ return $this->year_r;}
 
   //Setters
   //-------------------------------------------------------------------------
@@ -70,7 +71,7 @@
             //-----------------------
   public function setPrice($price)
   {
-		if(is_float($price))
+		if(is_numeric($price))
 		  	{
 		  		$this->price=$price;
 		  	}
@@ -92,7 +93,8 @@ public function setEnergy($energy)
              //----------------------- 
   public function setMileage($Mileage)
   {
-		if(is_int($Mileage)AND ($Mileage>0))
+    $Mileage=(int)$Mileage;
+		if($Mileage>0)
 		  	{
 		  		$this->mileage=$Mileage;
 		  	}
@@ -108,6 +110,19 @@ public function setEnergy($energy)
 		  		$this->description=$description;
 		  
 		
+  }
+  public function setYear_r($year_r)
+  {
+     $year_r=(int)$year_r;
+  	if($year_r>0)
+  	{
+  		$this->year_r=$year_r;
+  	}
+    else
+     {
+           trigger_error('anne de sortie invalide', E_USER_WARNING);
+         return;
+     }  
   }
 
 

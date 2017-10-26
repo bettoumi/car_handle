@@ -16,7 +16,7 @@
         <script src="js/vendor/modernizr-2.8.3.min.js"></script>
     </head>
     <body>
-    <header >
+    <header class="mb-4" >
      <!-- <div class="col-3 col-md-3 col-lg-3">
          <h1>Auto-Réve</h1>
      </div> -->
@@ -31,6 +31,15 @@
               
             </div>
           </div>
+
+          
+    
+         <button class="btn ajouter" type="button" data-toggle="collapse" data-target="#voiture" aria-expanded="false" aria-controls="collapseExample">
+           ajouetr
+        </button>
+    
+    
+  
         </nav>
 
     </header>

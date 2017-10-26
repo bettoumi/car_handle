@@ -97,6 +97,7 @@ textarea {
 body
 {
    font-family: 'Nixie One', cursive;
+   background-color: rgb(247,247,247);
 }   
 #logo
 {
@@ -114,11 +115,17 @@ nav
 {
     background-color: rgb(233,233,233);
    height: 50px;
+   border-bottom: 0.5px solid rgb(76,76,76);
 }
-.formulaire
+#formulaire
 {
     border :1px solid red;
-    margin : auto;
+    width: 100%;
+    background-color: rgb(233,233,233)
+}
+.ajouter
+{
+   background-color:  rgb(255,133,51);
 }
 
 
