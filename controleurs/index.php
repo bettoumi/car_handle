@@ -22,15 +22,54 @@ spl_autoload_register('loadclass');
 {
 	$nameclass=ucfirst($_POST['type']);
 	$vec=new $nameclass($_POST);
-    $manger_veh->add_vehicle($vec);
+    $manager_veh->add_vehicle($vec);
     header('Location:');
 
 }
 
-//recover information from data base
-//------------------------------------------------------------------------------
-$vehicleinfo=$manger_veh->selec_allvehicle() ;
+// delette vehicle from data base 
+// -----------------------------------------------------------------------------
 
+
+   if( isset($_POST['ide'] ) and isset($_POST['delete']))
+	 { 
+	 	
+      $id=(int)$_POST['ide'] ;
+      
+       $manager_veh->delte_vehicle($id) ; 
+         header('Location:');
+
+   } 
+
+
+
+//Edite vehicle in data  base
+//-----------------------------------------------------------------------------
+   if(isset($_POST['id'] ) and isset($_POST['edit']))
+   {
+      if(isset($_POST['model'])  OR isset($_POST['type']) OR
+         isset($_POST['year_r']) OR isset($_POST['color']) OR
+         isset($_POST['price']) OR isset($_POST['mileage']) OR 
+         isset($_POST['energy']) OR isset($_POST['description']) 
+  	  	)
+      {
+     
+	        $nameclass=ucfirst($_POST['type']);
+		    $vec=new $nameclass($_POST);
+	        $manager_veh->edit_vehicle($vec); 
+    
+      }
+
+   }
+
+
+
+
+
+
+//recive information from data base
+//------------------------------------------------------------------------------
+$vehicleinfo=$manager_veh->selec_allvehicle() ;
 
 
 

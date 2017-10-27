@@ -14,11 +14,12 @@
   {
 
   	 $this->hydrater($info_vehicle);
-     // $this->type=strtoupper(static::class);
+      $this->type=lcfirst(static::class);
   }
 
   //Getters
   //------------------------------------------------------------------------
+  public function id(){ return $this->id;}
   public function model(){ return $this->model;}
   public function type(){ return $this->type;}
   public function color(){ return $this->color;}
@@ -71,13 +72,13 @@
             //-----------------------
   public function setPrice($price)
   {
-		if(is_numeric($price))
-		  	{
+      //$price=floatval($price) ;
+		
 		  		$this->price=$price;
-		  	}
-		 else {trigger_error('prix invalide', E_USER_WARNING);
-     	 return;
-     	}  	
+		 //  	}
+		 // else {trigger_error('prix invalide', E_USER_WARNING);
+   //   	 return;
+   //   	}  	
   }
              //-----------------------
 public function setEnergy($energy)
@@ -141,6 +142,7 @@ public function hydrater(array $info_vehicle)
 		}
 
 	}
+
 }
 
 

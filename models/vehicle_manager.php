@@ -42,22 +42,21 @@ class vehicle_manager
    {
      
  
- 	 $veh=[];
- 	 $req=$this->db->query('SELECT model, type, color, year_r,  price, mileage, energy, description FROM vehicles') ;
- 	  $allvehicls=$req->fetchAll(PDO::FETCH_ASSOC);
- 	    // var_dump($allvehicls);
+     	 $veh=[];
+     	 $req=$this->db->query('SELECT id,  model, type, color, year_r,  price, mileage, energy, description FROM vehicles') ;
+     	  $allvehicls=$req->fetchAll(PDO::FETCH_ASSOC);
+     	    // var_dump($allvehicls);
 
- 	  foreach ($allvehicls as $vehc )
- 	   {
-            	
-	 	   	$nameclass=ucfirst($vehc['type']);
-		     $veh[]=new $nameclass($vehc);
- 	  	  // switch ($vehc['type'])
-          }
-     	// var_dump($veh) ;
-   		return $veh;
-    
- 	   
+     	  foreach ($allvehicls as $vehc )
+     	   {
+                	
+    	 	   	$nameclass=ucfirst($vehc['type']);
+    		     $veh[]=new $nameclass($vehc);
+     	  	 
+              }
+         	
+       		return $veh;
+     	   
 
  }
 
@@ -76,14 +75,44 @@ public function exist_veh(Vehicle $veh)
 }
 
 
+  //delete ehicle from data base
+  //------------------------------------------------------------------------
+  public  function delte_vehicle( $info)
+  {
+  	   // var_dump($info);
+     $req= $this->db->prepare('DELETE  FROM vehicles WHERE  id=:id');
+     $req->execute([
+      'id'=>$info] );
+
+     
+
+  }
+//Update des information of vehicle ind data base
+//----------------------------------------------------------------------------------
   
-
-
-    public function select_one($info)
+  public function edit_vehicle(vehicle $veh)
     {
+      $req=$this->db->prepare('UPDATE vehicles  SET model=:model, type=:type, color=:color , year_r=:year_r,  price=:price, mileage=:mileage, energy=:energy, description=:description WHERE id=:id');
+     
+        $req->bindValue('id', $veh->id(),PDO::PARAM_INT);
+         $req->bindValue('model', $veh->model(), PDO::PARAM_STR );
+        $req->bindValue('type', $veh->type(), PDO::PARAM_STR);
+        $req->bindValue('year_r', $veh->year_r(), PDO::PARAM_INT);
+        $req->bindValue('color', $veh->color(), PDO::PARAM_STR);
+        $req->bindValue('price', $veh->price());
+        $req->bindValue('mileage', $veh->mileage(), PDO::PARAM_INT);
+        $req->bindValue('energy', $veh->energy(), PDO::PARAM_STR);
+        $req->bindValue('description', $veh->description(), PDO::PARAM_STR);
+        $req->execute();
+      }
+
+   //Update des information of vehicle ind data base
+//----------------------------------------------------------------------------------
+      
 
 
-    } 
+
+     
 
     public function setDb(PDO $db)
    {
@@ -93,5 +122,5 @@ public function exist_veh(Vehicle $veh)
 
 }
 $db=connex_bdd();
-$manger_veh=new vehicle_manager($db);
+$manager_veh=new vehicle_manager($db);
 
