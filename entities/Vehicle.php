@@ -14,7 +14,7 @@
   {
 
   	 $this->hydrater($info_vehicle);
-     $this->type=strtoupper(static::class);
+     // $this->type=strtoupper(static::class);
   }
 
   //Getters
@@ -120,7 +120,7 @@ public function setEnergy($energy)
   	}
     else
      {
-           trigger_error('anne de sortie invalide', E_USER_WARNING);
+           trigger_error('annee de sortie invalide', E_USER_WARNING);
          return;
      }  
   }

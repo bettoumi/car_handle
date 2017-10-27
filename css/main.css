@@ -103,7 +103,7 @@ body
 {
     
     font-family:'Black Ops One' , cursive;
-    font-size: 2em;
+    font-size: 1em;
     color: rgb(255,133,51);
     
 }
@@ -121,15 +121,51 @@ nav
 {
     border :1px solid red;
     width: 100%;
-    background-color: rgb(233,233,233)
+
+}
+#vehicle
+{
+  background-color: #262323;
 }
 .ajouter
 {
    background-color:  rgb(255,133,51);
+   position: absolute;
+    right: 6rem;
+    font-size: 10px
+}
+.orange
+{
+    color:rgb(255,133,51)
+}
+.but
+{
+   
+    border: 1px solid black;
+    font-size: 10px;
+}
+span
+{
+    font-weight: bold;
 }
 
 
+@media(min-width: 720px)
+{
 
+#logo
+{
+    
+    font-size: 2em;
+   
+ }
+ .ajouter
+ {
+    font-size: 18px;
+ }
+
+
+}
 
 
 

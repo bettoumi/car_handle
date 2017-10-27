@@ -43,29 +43,21 @@ class vehicle_manager
      
  
  	 $veh=[];
- 	 $req=$this->db->query('SELECT model, type, color,  price, mileage, energy, description FROM vehicles') ;
+ 	 $req=$this->db->query('SELECT model, type, color, year_r,  price, mileage, energy, description FROM vehicles') ;
  	  $allvehicls=$req->fetchAll(PDO::FETCH_ASSOC);
- 	 
- 	  foreach ($allvehicls as $vehc)
+ 	    // var_dump($allvehicls);
+
+ 	  foreach ($allvehicls as $vehc )
  	   {
-
- 	  	  switch ($vehc['type'])
-
-           {
-
-		      case 'car': $veh[]= new Car($vehc);
-
-		      case 'moto': $veh[]= new Moto($vehc);
-		      case 'truck':$veh[]=new Truck($vehc);
-
-		      default: return null;
-
+            	
+	 	   	$nameclass=ucfirst($vehc['type']);
+		     $veh[]=new $nameclass($vehc);
+ 	  	  // switch ($vehc['type'])
           }
-	 
-         
- 	  }
+     	// var_dump($veh) ;
+   		return $veh;
+    
  	   
-   return $veh;
 
  }
 

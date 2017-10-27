@@ -6,21 +6,10 @@ function loadclass($class)
 }
 spl_autoload_register('loadclass');
 
+// ADD information from form in data base 
+// -----------------------------------------------------------------------------
 
-// $info_vehicle=[
-//  'model'=>'xxxx',
-//  'type'=>'car',
-//  'year_r'=>2010,
-//  'color'=>'rouge',
-//   'price'=>1500,
-//   'mileage'=>120000,
-//   'energy'=>'essence',
-//   'description'=>'qghGHGDHQSDHXGQHDGHQxhqhxqhdq'
-
-
-// ];
-
- if(      isset($_POST['model']) AND !empty($_POST['model'] ) AND
+ if(isset($_POST['model']) AND !empty($_POST['model'] ) AND
          isset($_POST['type']) AND !empty($_POST['type'] ) AND
          isset($_POST['year_r']) AND !empty($_POST['year_r'] ) AND
          isset($_POST['color']) AND !empty($_POST['color'] ) AND
@@ -32,13 +21,18 @@ spl_autoload_register('loadclass');
 
 {
 	$nameclass=ucfirst($_POST['type']);
-	var_dump($_POST);
-	var_dump($nameclass);
-	 $vec=new $nameclass($_POST);
+	$vec=new $nameclass($_POST);
     $manger_veh->add_vehicle($vec);
+    header('Location:');
 
 }
+
+//recover information from data base
+//------------------------------------------------------------------------------
+$vehicleinfo=$manger_veh->selec_allvehicle() ;
+
 
 
 
 require '../views/index_vue.php';
+?>
