@@ -126,6 +126,8 @@ nav
 #vehicle
 {
   background-color: #262323;
+  font-weight: bold;
+
 }
 .ajouter
 {
@@ -166,7 +168,7 @@ span
  .blien
  {
     /*text-decoration: none;*/
-    
+
  }
 
 

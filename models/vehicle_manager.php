@@ -106,9 +106,22 @@ public function exist_veh(Vehicle $veh)
         $req->execute();
       }
 
-   //Update des information of vehicle ind data base
+ //select a vehicle from data base
 //----------------------------------------------------------------------------------
-      
+  public function select_vehicle($id) 
+  {
+     $id=(int)$id;
+  
+     $req=$this->db->prepare('SELECT * from vehicles WHERE id=:id');
+     $req->bindValue('id', $id, PDO::PARAM_INT);
+     $req->execute();
+     $resul=$req->fetch(PDO::FETCH_ASSOC);
+     // var_dump($resul);
+     $nameclass=ucfirst($resul['type']);
+            return new $nameclass($resul);
+         
+ 
+  }   
 
 
 
