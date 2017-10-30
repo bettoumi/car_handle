@@ -57,9 +57,16 @@ spl_autoload_register('loadclass');
 	        $nameclass=ucfirst($_POST['type']);
 		    $vec=new $nameclass($_POST);
 	        $manager_veh->edit_vehicle($vec); 
+	         
     
       }
-      header('Location:');
+      header('Location: '. $_SERVER[HTTP_REFERER]);
+
+      // savoir ou on est 
+      // if (adresse === 'index') {
+      // }
+      // header('Location: ');
+      // else header('Location: dfdgdf');
    }
 
 
