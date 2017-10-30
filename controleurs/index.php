@@ -9,7 +9,7 @@ spl_autoload_register('loadclass');
 // ADD information from form in data base 
 // -----------------------------------------------------------------------------
 
- if(isset($_POST['model']) AND !empty($_POST['model'] ) AND
+ if( isset($_POST['addveh']) AND  isset($_POST['model']) AND !empty($_POST['model'] ) AND
          isset($_POST['type']) AND !empty($_POST['type'] ) AND
          isset($_POST['year_r']) AND !empty($_POST['year_r'] ) AND
          isset($_POST['color']) AND !empty($_POST['color'] ) AND
@@ -59,7 +59,7 @@ spl_autoload_register('loadclass');
 	        $manager_veh->edit_vehicle($vec); 
     
       }
-
+      header('Location:');
    }
 
 

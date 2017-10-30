@@ -19,13 +19,20 @@
     <p clas="car-text"><?php echo $veh->type(); ?></p>
     <p class="card-text"><?php echo $veh->description(); ?></p>
     
-    <!-- Button od delette vehicle from data base -->
-            <button type="button" class="btn but orange " data-toggle="modal" data-target="#delete<?php echo $veh->id(); ?>" data-whatever="@mdo"> supprimer  </button>
+  
+            		<!-- Modal dlette vehicle-->
+                    <!-- //////////////////////////////// -->
+				            <?php  include_once 'template/modaldeletevehicle.php';?>
 
 
-      <!-- Button edit vehicle  data base -->
-                      <button type="button" class="btn but orange " data-toggle="modal" data-target="#edit<?php echo $veh->id(); ?>" data-whatever="@mdo">editer  </button>
-                      
+    				 <!-- Modal Edit vehicle -->
+                       <!-- ///////////////////// -->
+                 <?php include_once 'template/modaleditvehicle.php';  ?>
+			
+
+
+     
+
   </div>
 </div>
 

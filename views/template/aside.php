@@ -63,7 +63,7 @@
 						 </div>
 					</div>
              </div>
-		            <input type="submit" name="" value="Ajouter">
+		            <input type="submit" name="addveh" value="Ajouter">
          
 			
 	       </form>
