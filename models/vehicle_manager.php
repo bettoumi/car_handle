@@ -32,9 +32,32 @@ class vehicle_manager
       	$req->bindValue('energy', $veh->energy(), PDO::PARAM_STR);
       	$req->bindValue('description', $veh->description(), PDO::PARAM_STR);
       	$req->execute();
+        return $this->db->lastInsertId();
+        // $this->add_image($src);
       }
 
-  }   
+      
+
+  }  
+
+  //ADD image in data base
+  //----------------------------------------------------------
+  public function add_image($src, $id) 
+
+  {
+     // var_dump($src);
+    var_dump($id);
+     $id=(int)$id;
+     $req1=$this->db->prepare('INSERT INTO images_vehicles(scr, idvehicles) VALUES(:scr, :idvehicles)');
+        $req1->execute(array(
+             'scr'=> $src,
+            'idvehicles' => $id
+
+            ));
+
+
+  }
+
 
 // Select all  vehicle from data base
 // -----------------------------------------------------------------------

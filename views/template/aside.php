@@ -5,7 +5,7 @@
 	    <!-- /////////////// //////////////////////////////////////////-->
 	<div class="collapse" id="voiture" >
 	  <div class="card card-block orange" id="vehicle" >
-	       <form action="" method="post"   >
+	       <form action="" method="post" enctype="multipart/form-data"  >
 	       	<div class="row">
 			<div class="form-group row col-12 col-md-6 col-lg-4" >
 			  <label for="model" class="col-3 col-form-label">model:</label>
@@ -51,7 +51,7 @@
 			<div class="form-group row col-12 col-md-6 col-lg-4">
 			  <label for="energy" class="col-3 col-form-label">Energy</label>
 			  <div class="col-9">
-			    <input class="form-control"  name="energy" type="text" value="" id="energy" placeholder="Diesel ou essence ou gpl">
+			    <input class="form-control"  name="energy" type="text" value="" id="energy" placeholder="Diesel, essence ou hybride">
 			  </div>
 			</div>
 			</div>
@@ -62,12 +62,20 @@
 					    <input class="form-control"  name="color" type="text" value="" id="color">
 					  </div>
 				</div> 
-				<div class="form-group row col-12 col-md-8 col-lg-8">
-					  <label for="description" class="col-3 col-form-label">description</label>
-						  <div class="col-9">
-							 <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+				<div class="form-group row col-12 col-md-4 col-lg-4">
+					  <label for="description" class="col-4 col-form-label">description</label>
+						  <div class="col-8">
+							 <textarea class="form-control" id="description" name="description" rows="2"></textarea>
 						 </div>
 				</div>
+				<div class="form-group row col-12 col-md-4 col-lg-4">
+					  <label for="image" class="col-3 col-form-label">image</label>
+					  <div class="col-9">
+					     <input type="hidden" name="MAX_IMAGE_SIZE" value="50000000" />
+					    <input class="form-control"  name="image" type="file"  id="image">
+					  </div>
+				</div> 
+
              </div>
 		            <input type="submit" name="addveh" value="Ajouter">
          

@@ -16,16 +16,63 @@ spl_autoload_register('loadclass');
          isset($_POST['price']) AND !empty($_POST['price'] ) AND
          isset($_POST['mileage']) AND !empty($_POST['mileage'] ) AND
          isset($_POST['energy']) AND !empty($_POST['energy'] ) AND
-         isset($_POST['description']) AND !empty($_POST['description'] ) 
+         isset($_POST['description']) AND !empty($_POST['description'])
+         	 
   	  	)
 
 {
 	$nameclass=ucfirst($_POST['type']);
 	$vec=new $nameclass($_POST);
-    $manager_veh->add_vehicle($vec);
-    header('Location:');
 
+   
+
+     
+			    $idv=  $manager_veh->add_vehicle($vec);
+			    
+			     
+
+  //header('Location:');
 }
+
+  //receive information of image
+       //-----------------------------------------
+    $target_dir='../img/';
+    $dest = $target_dir . basename($_FILES['image']['name']);
+     $name_file=$_FILES['image']['name'];
+    $extensions_valides = array( 'jpg' , 'jpeg' , 'gif' , 'png', 'jpg' );
+     $extensionimage=substr($_FILES['image']['name'], strripos($_FILES['image']['name'], '.')+1);
+     // var_dump($extensionimage);
+     // var_dump($dest);
+     // var_dump($_POST);
+    if ($_FILES['image']['error'] > 0) {
+    	$erreur = "Erreur lors du transfert";
+    } else  if($_FILES['image']['size']>$_POST['MAX_IMAGE_SIZE'])
+         {
+         	echo  "Le fichier est trop gros";
+         }
+         else if(!in_array($extensionimage, $extensions_valides))
+         	{ 
+             echo  "extension non valid";
+         	}
+         else{
+         	  
+         	  $resultat = move_uploaded_file($_FILES['image']['tmp_name'], $dest);
+         	   if($resultat) echo "tranfert reussi";
+         	      else  echo 'le transfer ne pas fait';
+         }
+
+
+      	//ADD INFORMATION IMAGE IN THE TABLE      
+ 		//-------------------------------------------------- 
+   
+			     $src = $target_dir.$name_file;
+			     // var_dump($src);
+        
+
+// ADD Image dans la data base
+// ---------------------------------------------------------------------------------
+ 
+$manager_veh->add_image($src, $idv);  
 
 // delette vehicle from data base 
 // -----------------------------------------------------------------------------
