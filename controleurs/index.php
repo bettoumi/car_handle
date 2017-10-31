@@ -62,23 +62,36 @@ spl_autoload_register('loadclass');
       }
       header('Location: '. $_SERVER[HTTP_REFERER]);
 
-      // savoir ou on est 
-      // if (adresse === 'index') {
-      // }
-      // header('Location: ');
-      // else header('Location: dfdgdf');
+      
    }
+  
 
 
 
 
 
-
-//recive information from data base
+//recive all informations for allvehicle from data base
 //------------------------------------------------------------------------------
-$vehicleinfo=$manager_veh->selec_allvehicle() ;
+if(isset($_POST['select-vehicle']) )
 
+{  //var_dump($_POST);
+    if(in_array($_POST['select-vehicle'],['truck','car', 'moto' ] ))
+    {
+	 $vehicleinfo=$manager_veh->select_vehicle($_POST['select-vehicle']);}
+     
+	else
+	{
+		 $vehicleinfo=$manager_veh->selec_allvehicle() ;
+	}
 
+   // header('Location: '. $_SERVER[HTTP_REFERER]);
+} else{
+	 $vehicleinfo=$manager_veh->selec_allvehicle() ;}
+
+// $vehicleinfo=$manager_veh->selec_allvehicle();
+//recive informations for allvehicle  witdh same data type from data base
+//------------------------------------------------------------------------------
+ 
 
 require '../views/index_vue.php';
 ?>

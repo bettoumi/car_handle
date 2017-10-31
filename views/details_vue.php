@@ -1,11 +1,10 @@
 <?php include_once 'template/header.php';
-?>
-
-
-
-   <?php
-	  include_once 'template/aside.php';
+     //fom for add vehicle 
+     //-------------------------
+  include_once 'template/aside.php';
 	?>
+
+	<!-- Display detail of vehicle -->
 <div class="container">
 
 <div class="card mb-3">

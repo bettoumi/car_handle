@@ -138,7 +138,9 @@ nav
 }
 .orange
 {
-    color:rgb(255,133,51)
+    color:rgb(255,133,51);
+    font-weight:  bold;
+
 }
 .but
 {
@@ -165,9 +167,10 @@ span
  {
     font-size: 18px;
  }
- .blien
+  a .blien
  {
-    /*text-decoration: none;*/
+    text-decoration: none;
+    font-weight: bold;
 
  }
 

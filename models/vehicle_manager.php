@@ -108,20 +108,43 @@ public function exist_veh(Vehicle $veh)
 
  //select a vehicle from data base
 //----------------------------------------------------------------------------------
-  public function select_vehicle($id) 
+  public function select_vehicle($info) 
   {
-     $id=(int)$id;
+     if( is_int($info))
+     {
+        $id=(int)$info;
   
-     $req=$this->db->prepare('SELECT * from vehicles WHERE id=:id');
-     $req->bindValue('id', $id, PDO::PARAM_INT);
-     $req->execute();
-     $resul=$req->fetch(PDO::FETCH_ASSOC);
-     // var_dump($resul);
-     $nameclass=ucfirst($resul['type']);
-            return new $nameclass($resul);
+         $req=$this->db->prepare('SELECT * FROM vehicles WHERE id= :id');
+         $req->bindValue('id', $id, PDO::PARAM_INT);
+         $req->execute();
+         $resul=$req->fetch(PDO::FETCH_ASSOC);
+         // var_dump($resul);
+         $nameclass=ucfirst($resul['type']);
+                return new $nameclass($resul);
+      } 
+             //select vhicles width type
+     else 
+      {
+        
+        $vehs=[];
+        $req2=$this->db->prepare('SELECT * FROM vehicles WHERE type= :type') ;
+        $req2->bindValue('type', $info, PDO::PARAM_STR);
+       $req2->execute();
+         $resul=$req2->fetchALL(PDO::FETCH_ASSOC);
+        // var_dump($resul);
+               
+        // var_dump($resul);
+        foreach ($resul as $veh ) {
+            $nameclass=ucfirst($veh['type']);
+             $vehs[]=new $nameclass($veh);
+        }
          
+          return $vehs;
+        }  
  
-  }   
+  } 
+
+  //  
 
 
 

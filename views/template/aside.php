@@ -10,6 +10,7 @@
 			<div class="form-group row col-12 col-md-6 col-lg-4" >
 			  <label for="model" class="col-3 col-form-label">model:</label>
 			  <div class="col-9">
+
 			    <input class="form-control" type="text" value="" name="model" id="model">
 			  </div>
 			</div>
@@ -17,7 +18,12 @@
 			<div class="form-group row col-12 col-md-6 col-lg-4">
 			  <label for="type" class="col-3 col-form-label">typev: </label>
 			  <div class="col-9">
-			    <input class="form-control"  name="type" type="text" value="" id="type">
+			       <select name="type">
+					    <option value="car">Car</option>
+					    <option value="truck">Truck</option>
+					    <option value="moto">Moto</option>
+				  </select>
+			    <!-- <input class="form-control"  name="type" type="text" value="" id="type"> -->
 			  </div>
 			</div>
                      
@@ -39,13 +45,13 @@
 			<div class="form-group row col-12 col-md-6 col-lg-4">
 			  <label for="mileage" class="col-3 col-form-label">Kilométrage:</label>
 			  <div class="col-9">
-			    <input class="form-control"  name="mileage" type="number" value="" id="mileage">
+			    <input class="form-control"  name="mileage" type="number" value="" id="mileage" >
 			  </div>
 			</div>
 			<div class="form-group row col-12 col-md-6 col-lg-4">
 			  <label for="energy" class="col-3 col-form-label">Energy</label>
 			  <div class="col-9">
-			    <input class="form-control"  name="energy" type="text" value="" id="energy">
+			    <input class="form-control"  name="energy" type="text" value="" id="energy" placeholder="Diesel ou essence ou gpl">
 			  </div>
 			</div>
 			</div>
@@ -61,7 +67,7 @@
 						  <div class="col-9">
 							 <textarea class="form-control" id="description" name="description" rows="3"></textarea>
 						 </div>
-					</div>
+				</div>
              </div>
 		            <input type="submit" name="addveh" value="Ajouter">
          

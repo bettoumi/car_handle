@@ -1,11 +1,32 @@
 <?php include_once 'template/header.php';
-?>
-
-
-
-   <?php
 	  include_once 'template/aside.php';
-	?>
+?>
+<section class="selct_affich mb-5 mx-auto w-50" >
+ <form action="" method="post">
+	 <div class="input-group row ">
+	 	<!-- <span class="input-group-btn col-3">
+	 		<button type="submit " name=choice_vehicle class="btn orange">choisir</button>
+	 	</span> -->
+	 	 <select name="select-vehicle" class="col-9" onchange="this.form.submit()">
+	 	 		<?php if (isset($_POST['select-vehicle'])){ ?>
+				  <option selected disabled><?php echo $_POST['select-vehicle'] ?> </option>
+	 	 		<?php } 
+	 	 	else{
+	 	 		?>
+				  <option selected disabled>Choisisez </option>
+	 	 		<?php
+	 	 		} ?>
+			  <option value="all"> les vehicules</option>
+			  <option value="car">voiture</option>
+			  <option value="truck">camion</option>
+			  <option value="moto">moto</option>
+			 
+		</select>
+	 	 
+	 </div>
+ </form>
+</section>
+
 <!-- stard display all vehicle section  -->
 <section class="vehicules container mx-auto ">
 
@@ -17,7 +38,7 @@
        	
     	
     ?>
-		<div class="card col-lg-3  col-12 col-md-6" >
+		<div class="card col-lg-4 mb-3 col-12 col-md-6 "  style="max-width: 20em">
 		  <img class="card-img-top" src="..." alt="Card image cap">
 		  <div class="card-block row">
 		    <span class="col-6"><?php echo $veh->model() ; ?> </span>
@@ -52,32 +73,7 @@
                                  
 				
            <a href="details.php?id=<?php  echo $veh->id(); ?>" class="blien btn but orange" >detail</a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		    <!-- <form action="" method="post" class="form-inline">
-		     <input type="hidden" value="<?php //echo $veh->id(); ?>" name="id">
-		     <input type="submit" class="but orange btn" name="delete" value="supprimer">
-		    
-		     <input type="submit"  class="but orange btn " name="edit" value="Editer">
-		     <input type="submit"  class="but  orange btn " name="detail" value="detail">
-		    </form> -->
+    
 		  </div>
 
 		</div>
