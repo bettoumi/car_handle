@@ -39,7 +39,7 @@
     	
     ?>
 		<div class="card col-lg-4 mb-3 col-12 col-md-6 "  style="max-width: 20em">
-		  <img class="card-img-top" src="..." alt="Card image cap">
+		  <img class="card-img-top img-fluid" src="<?php echo $veh->scr() ; ?>" alt="Card image cap">
 		  <div class="card-block row">
 		    <span class="col-6"><?php echo $veh->model() ; ?> </span>
 		    <span class="col-6 orange"><?php echo $veh->price() ; ?></span>

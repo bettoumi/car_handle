@@ -20,7 +20,7 @@ class vehicle_manager
   	 
       if(!$this->exist_veh($veh))
       {
-
+        // var_dump($veh);
       	$req=$this->db->prepare('INSERT INTO vehicles(model, type, year_r, color, price, mileage, energy, description) VALUES(:model, :type, :year_r, :color, :price, :mileage, :energy, :description)');
 
       	$req->bindValue('model', $veh->model(), PDO::PARAM_STR );
@@ -63,10 +63,9 @@ class vehicle_manager
 // -----------------------------------------------------------------------
    public function selec_allvehicle() 
    {
-     
- 
+         
      	 $veh=[];
-     	 $req=$this->db->query('SELECT id,  model, type, color, year_r,  price, mileage, energy, description FROM vehicles') ;
+     	 $req=$this->db->query('SELECT V.id,  V.model, V.type, V.color, V.year_r,  V.price, V.mileage, V.energy, V.description,  I.scr FROM vehicles AS V LEFT JOIN images_vehicles AS I ON V.id=I.idvehicles ') ;
      	  $allvehicls=$req->fetchAll(PDO::FETCH_ASSOC);
      	    // var_dump($allvehicls);
 
@@ -134,13 +133,19 @@ public function exist_veh(Vehicle $veh)
   public function select_vehicle($info) 
   {
      if( is_int($info))
-     {
+
+
+           {
+
+
+
+    
         $id=(int)$info;
   
-         $req=$this->db->prepare('SELECT * FROM vehicles WHERE id= :id');
+         $req=$this->db->prepare('SELECT V.id,  V.model, V.type, V.color, V.year_r,  V.price, V.mileage, V.energy, V.description,  I.scr FROM  vehicles AS V LEFT JOIN images_vehicles AS I ON V.id=I.idvehicles WHERE V.id= :id');
          $req->bindValue('id', $id, PDO::PARAM_INT);
          $req->execute();
-         $resul=$req->fetch(PDO::FETCH_ASSOC);
+         $resul=$req->fetch(PDO::FETCH_ASSOC); 
          // var_dump($resul);
          $nameclass=ucfirst($resul['type']);
                 return new $nameclass($resul);
@@ -150,7 +155,7 @@ public function exist_veh(Vehicle $veh)
       {
         
         $vehs=[];
-        $req2=$this->db->prepare('SELECT * FROM vehicles WHERE type= :type') ;
+        $req2=$this->db->prepare('SELECT V.id,  V.model, V.type, V.color, V.year_r,  V.price, V.mileage, V.energy, V.description,  I.scr FROM  vehicles AS V LEFT JOIN images_vehicles AS I ON V.id=I.idvehicles WHERE type= :type') ;
         $req2->bindValue('type', $info, PDO::PARAM_STR);
        $req2->execute();
          $resul=$req2->fetchALL(PDO::FETCH_ASSOC);

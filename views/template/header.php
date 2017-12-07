@@ -34,8 +34,8 @@
 
           
     
-         <button class="btn ajouter" type="button" data-toggle="collapse" data-target="#voiture" aria-expanded="false" aria-controls="collapseExample">
-           ajouetr
+         <button class="btn ajouter mt-2" type="button" data-toggle="collapse" data-target="#voiture" aria-expanded="false" aria-controls="collapseExample">
+           ajouter
         </button>
     
     

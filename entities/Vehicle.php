@@ -9,11 +9,12 @@
            $price,
            $energy,
            $mileage,
-           $description;
+           $description,
+           $scr;
   public function __construct(array $info_vehicle)
   {
 
-  	 $this->hydrater($info_vehicle);
+  	  $this->hydrater($info_vehicle);
       $this->type=lcfirst(static::class);
   }
 
@@ -28,6 +29,7 @@
   public function mileage(){ return $this->mileage;}
   public function description(){ return $this->description;}
   public function year_r(){ return $this->year_r;}
+  public function scr(){ return $this->scr;}
 
   //Setters
   //-------------------------------------------------------------------------
@@ -107,8 +109,16 @@ public function setEnergy($energy)
   }
   public function setDescription($description)
   {
+    
+          $this->description=$description;
+      
+    
+  
+  }
+  public function setScr( $src)
+  {
 		
-		  		$this->description=$description;
+		  		$this->scr=$src;
 		  
 		
   }

@@ -21,18 +21,30 @@ spl_autoload_register('loadclass');
   	  	)
 
 {
-	$nameclass=ucfirst($_POST['type']);
-	$vec=new $nameclass($_POST);
 
-   
+     $infovehicle=['type'=>htmlspecialchars($_POST['type']),
+     'model'=>htmlspecialchars($_POST['model']),
+     'year_r'=>(int)htmlspecialchars($_POST['year_r']),
+     'color'=>htmlspecialchars($_POST['color']),
+     'price'=>htmlspecialchars($_POST['price']),
+     'mileage'=>htmlspecialchars($_POST['mileage']),
+     'energy'=>htmlspecialchars($_POST['energy']),
+     'description'=>htmlspecialchars($_POST['description']),
+     ];
+     
+	$nameclass=ucfirst($_POST['type']);
+
+	$vec=new $nameclass($infovehicle);
+
+    var_dump($vec);
 
      
-			    $idv=  $manager_veh->add_vehicle($vec);
+			    
 			    
 			     
 
-  //header('Location:');
-}
+
+
 
   //receive information of image
        //-----------------------------------------
@@ -71,8 +83,11 @@ spl_autoload_register('loadclass');
 
 // ADD Image dans la data base
 // ---------------------------------------------------------------------------------
- 
-$manager_veh->add_image($src, $idv);  
+    $idv=  $manager_veh->add_vehicle($vec);
+    $manager_veh->add_image($src, $idv);  
+    
+
+ }   
 
 // delette vehicle from data base 
 // -----------------------------------------------------------------------------
@@ -133,7 +148,10 @@ if(isset($_POST['select-vehicle']) )
 
    // header('Location: '. $_SERVER[HTTP_REFERER]);
 } else{
-	 $vehicleinfo=$manager_veh->selec_allvehicle() ;}
+	 $vehicleinfo=$manager_veh->selec_allvehicle() ;
+
+   
+  }
 
 // $vehicleinfo=$manager_veh->selec_allvehicle();
 //recive informations for allvehicle  witdh same data type from data base

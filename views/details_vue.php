@@ -8,7 +8,7 @@
 <div class="container">
 
 <div class="card mb-3">
-  <img class="card-img-top" src="..." alt="Card image cap">
+  <img class="card-img-top img-fluid" src="<?php echo $veh->scr(); ?>" alt="Card image cap">
   <div class="card-block">
     <h4 class="card-title"><?php echo $veh->model(); ?></h4>
     <p clas="car-text"><?php echo $veh->year_r(); ?></p>
